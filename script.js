@@ -1,42 +1,138 @@
-function cargarBotones() {
+let resultado = 0;
+let numeroFormado;
+let contadorSimbolos = 0;
+let numero1 = 0;
+let numero2 = 0;
+let operacionAnterior;
+let valorDisplay = document.getElementById("textBox");
+let resultadoDisplay = document.getElementById("resultado");
 
-    let numeros = ["7", "8", "9", "4", "5", "6", "1", "2", "3", "+-", "0", "."];
-    let simbolos = ["CE", "C", "+", "-", "x", "/", "=",];
-    let gridNumeros = document.getElementById("gridNumeros");
-    let gridSimbolos = document.getElementById("simbolos");
-    let valorInputBox;
+function hacerOperacion(simbolo) {
 
-    for (let i = 0; i < numeros.length; i++) {
+}
 
-        let btn = document.createElement("button");
-        btn.innerText = numeros[i];
-        btn.className = "botones";
+document.addEventListener("click", function (event) {
 
-        gridNumeros.appendChild(btn);
-        btn.onclick = function mostrarBoton() {
-            let textBox = document.getElementById("textBox");
-            
-            
+
+    switch (event.target.value) {
 
 
 
+        case "+":
+
+            contadorSimbolos++;
+
+            valorDisplay.value += "+";
+            numero1 = resultado;
+            numeroFormado = valorDisplay.value.split("+");
+
+            if (contadorSimbolos > 1) {
+                if (resultado === 0) {
+
+
+
+                    numero1 = parseInt(numeroFormado[0]);
+                    numero2 = parseInt(numeroFormado[1]);
+
+                    resultado = numero1 + numero2;
+
+                }
+
+                else {
+                    numero2 = parseInt(numeroFormado[contadorSimbolos - 1]);
+                    resultado = numero1 + numero2;
+
+                }
+
+                resultadoDisplay.value = resultado;
+
+            }
+            operacionAnterior = "+";
+            console.log(operacionAnterior);
+            break;
+        case "-":
+
+
+            contadorSimbolos++;
+
+            valorDisplay.value += "-";
+            numero1 = resultado;
+
+            if (contadorSimbolos > 1) {
+                numeroFormado = valorDisplay.value.split("-");
+                if (resultado === 0) {
+
+
+
+                    numero1 = parseInt(numeroFormado[0]);
+                    numero2 = parseInt(numeroFormado[1]);
+
+                    resultado = numero1 - numero2;
+
+                }
+
+                else {
+                    numero2 = parseInt(numeroFormado[contadorSimbolos - 1]);
+                    resultado = numero1 - numero2;
+
+                }
+
+                resultadoDisplay.value = resultado;
+
+            }
+            operacionAnterior = "-";
+            console.log(operacionAnterior);
+            break;
+
+        case "=":
+
+            console.log(operacionAnterior);
+            // resultado=0;
+            //     for(let i=0; i<numeroFormado.length;i++){
+            //         console.log(numeroFormado[i]);
+            //         resultado+=parseInt(numeroFormado[i]); 
+            //         resultadoDisplay.value=resultado;
+            //     }
+
+
+
+            break;
+
+        default:
+            // console.log(contadorSimbolos);
+            break;
+    }
+
+
+
+
+});
+
+
+
+
+
+function validarSimbolos(operacion) {
+    if (numeroFormado == "")
+        console.log("ingresa un numero");
+
+    else {
+
+        switch (operacion) {
+            case "suma":
+
+                numeroFormado += "+";
+                mostrarDisplay("+");
+                contadorSimbolos++;
+
+
+                mostrarResultado(resultado);
+
+
+
+
+                break;
         }
     }
-    for (let i = 0; i < simbolos.length; i++) {
-
-        let btn = document.createElement("button");
-        btn.className = "botonesSim";
-        btn.innerText = simbolos[i];
-        gridSimbolos.appendChild(btn);
-
-
-    }
-
-
-
-
-
-
-
 }
 
