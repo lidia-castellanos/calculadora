@@ -9,10 +9,11 @@
 
 
 .calculadora {
+    background-color: #a479a2;
 
-    border: 1px solid black;
     padding: 20px;
     border-radius: 10px;
+    border: 2 px solid #3f1337;
 }
 
 
@@ -31,7 +32,7 @@
 
 form .pantalla {
     border-radius: 10px;
-    border:  solid;
+    border: 3px solid #412a3f;
     display: flexbox;
     flex-direction: row;
 
@@ -39,19 +40,28 @@ form .pantalla {
 
 }
 
+.botones {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #632c5a;
+    color: white;
+}
+
 form .display input {
+    font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: right;
     width: 97%;
-   
-    flex: 1;
 
+    flex: 1;
+    background-color: transparent;
 
 }
 
 form .displayResultado input {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: transparent;
     text-align: right;
     width: 97%;
-    
+
     flex: 1;
 
 

@@ -1,5 +1,6 @@
 let resultado = 0;
 let numeroFormado;
+let numeroFinal;
 let contadorSimbolos = 0;
 let numero1 = 0;
 let numero2 = 0;
@@ -7,9 +8,7 @@ let operacionAnterior;
 let valorDisplay = document.getElementById("textBox");
 let resultadoDisplay = document.getElementById("resultado");
 
-function hacerOperacion(simbolo) {
 
-}
 
 document.addEventListener("click", function (event) {
 
@@ -20,83 +19,61 @@ document.addEventListener("click", function (event) {
 
         case "+":
 
-            contadorSimbolos++;
-
-            valorDisplay.value += "+";
-            numero1 = resultado;
+            resultadoDisplay.value = resultado;
             numeroFormado = valorDisplay.value.split("+");
-
-            if (contadorSimbolos > 1) {
-                if (resultado === 0) {
-
+            console.log(numeroFormado);
+            let longitud = numeroFormado.length;
 
 
-                    numero1 = parseInt(numeroFormado[0]);
-                    numero2 = parseInt(numeroFormado[1]);
+            if (longitud === 3 && resultado === 0) {
 
-                    resultado = numero1 + numero2;
-
-                }
-
-                else {
-                    numero2 = parseInt(numeroFormado[contadorSimbolos - 1]);
-                    resultado = numero1 + numero2;
-
-                }
+                numero1 = parseInt(numeroFormado[0]);
+                numero2 = parseInt(numeroFormado[1]);
+                resultado = numero1 + numero2;
 
                 resultadoDisplay.value = resultado;
-
             }
-            operacionAnterior = "+";
-            console.log(operacionAnterior);
+            else {
+                numero1 = resultado;
+                numero2 = parseInt(numeroFormado[longitud - 2]);
+                resultado = numero1 + numero2;
+                resultadoDisplay.value = resultado;
+            }
+
+
             break;
+
+
+
         case "-":
 
+            
+            resultadoDisplay.value = resultado;
+            numeroFormado = valorDisplay.value.split("-");
+           
+            let longitud2 = numeroFormado.length;
+            console.log(resultado);
 
-            contadorSimbolos++;
+            if (longitud2 === 3 && resultado === 0) {
 
-            valorDisplay.value += "-";
-            numero1 = resultado;
-
-            if (contadorSimbolos > 1) {
-                numeroFormado = valorDisplay.value.split("-");
-                if (resultado === 0) {
-
-
-
-                    numero1 = parseInt(numeroFormado[0]);
-                    numero2 = parseInt(numeroFormado[1]);
-
-                    resultado = numero1 - numero2;
-
-                }
-
-                else {
-                    numero2 = parseInt(numeroFormado[contadorSimbolos - 1]);
-                    resultado = numero1 - numero2;
-
-                }
+                numero1 = parseInt(numeroFormado[0]);
+                numero2 = parseInt(numeroFormado[1]);
+                
+                resultado = numero1 - numero2;
 
                 resultadoDisplay.value = resultado;
-
             }
-            operacionAnterior = "-";
-            console.log(operacionAnterior);
-            break;
-
-        case "=":
-
-            console.log(operacionAnterior);
-            // resultado=0;
-            //     for(let i=0; i<numeroFormado.length;i++){
-            //         console.log(numeroFormado[i]);
-            //         resultado+=parseInt(numeroFormado[i]); 
-            //         resultadoDisplay.value=resultado;
-            //     }
-
+            else if(longitud2>2){
+                numero1 = resultado;
+                numero2 = parseInt(numeroFormado[longitud2 - 2]);
+                resultado = numero1 - numero2;
+                // console.log(numero1, numero2);
+                resultadoDisplay.value = resultado;
+            }
 
 
             break;
+
 
         default:
             // console.log(contadorSimbolos);
@@ -112,27 +89,5 @@ document.addEventListener("click", function (event) {
 
 
 
-function validarSimbolos(operacion) {
-    if (numeroFormado == "")
-        console.log("ingresa un numero");
 
-    else {
-
-        switch (operacion) {
-            case "suma":
-
-                numeroFormado += "+";
-                mostrarDisplay("+");
-                contadorSimbolos++;
-
-
-                mostrarResultado(resultado);
-
-
-
-
-                break;
-        }
-    }
-}
 
